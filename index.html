@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flores Amarillas para Brigitte 🌻💛</title>
+<title>Flores Amarillas para Valery 🌻💛</title>
 <style>
   /* --- Estilos Generales --- */
   * { box-sizing: border-box; user-select: none; -webkit-tap-highlight-color: transparent; }
@@ -11,16 +11,14 @@
   body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    /* CAMBIO AQUÍ: Fondo de muchas flores amarillas */
     background-image: url('https://images.unsplash.com/photo-1519397011158-9f13703a2351?q=80&w=1000&auto=format&fit=crop');
-    background-size: cover; /* La imagen cubre toda la pantalla */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* No repite la imagen */
-    background-attachment: fixed; /* El fondo se queda fijo al hacer scroll */
-    color: #5b4300; /* Color de texto oscuro para contraste */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #5b4300;
     min-height: 100vh;
     overflow-x: hidden;
-    /* Añadimos una capa semitransparente oscura sobre el fondo para que el texto se lea bien */
     position: relative;
   }
 
@@ -28,8 +26,8 @@
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(255, 255, 200, 0.6); /* Capa amarilla muy clara y transparente */
-    z-index: -1; /* Detrás de todo el contenido */
+    background-color: rgba(255, 255, 200, 0.6);
+    z-index: -1;
   }
 
   .view {
@@ -45,17 +43,17 @@
   .view.active { display: flex; }
   
   h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Un poco más grande */
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     margin: 10px 0;
-    text-shadow: 2px 2px 4px rgba(255,255,255,0.8); /* Sombra para el título */
-    color: #856404; /* Tono de amarillo más oscuro para el texto */
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+    color: #856404;
   }
   
   p {
     font-size: 1.2rem;
     max-width: 700px;
     line-height: 1.6;
-    background-color: rgba(255, 255, 255, 0.7); /* Fondo semitransparente para los párrafos */
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 15px;
     border-radius: 15px;
     margin: 15px auto;
@@ -64,7 +62,7 @@
   
   button {
     border: 0;
-    border-radius: 50px; /* Botón más redondeado */
+    border-radius: 50px;
     padding: 18px 40px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -77,16 +75,14 @@
   button:active { transform: scale(0.95); }
   
   .btn-jugar {
-    background: #ffc107; /* Amarillo vibrante para el botón */
+    background: #ffc107;
     color: #856404;
     border: 2px solid #856404;
   }
   
-  .btn-jugar:hover {
-    background: #ffca2c;
-  }
+  .btn-jugar:hover { background: #ffca2c; }
 
-  /* --- Resto de estilos del juego (sin cambios) --- */
+  /* --- Juego y Animaciones --- */
   .game-area{position:fixed;inset:0;overflow:hidden;pointer-events:none}
 
   .collectible{
@@ -113,30 +109,21 @@
     filter: drop-shadow(0 0 15px rgba(255,255,255,0.9));
   }
 
-  .tornado-1 {
-    top: 50vh; left: 50vw;
-    animation: repelerIman1 2s ease-in-out infinite;
-  }
+  .tornado-1 { top: 50vh; left: 50vw; animation: repelerIman1 2s ease-in-out infinite; }
   @keyframes repelerIman1 {
     0% { transform: translate(-50%, -50%) scale(0.3) rotate(0deg); opacity: 0; }
     30% { transform: translate(-20vw, -20vh) scale(1) rotate(120deg); opacity: 1; }
     100% { transform: translate(-50vw, -40vh) scale(1.6) rotate(360deg); opacity: 0; }
   }
 
-  .tornado-2 {
-    top: 50vh; left: 50vw;
-    animation: repelerIman2 2.2s ease-in-out infinite;
-  }
+  .tornado-2 { top: 50vh; left: 50vw; animation: repelerIman2 2.2s ease-in-out infinite; }
   @keyframes repelerIman2 {
     0% { transform: translate(-50%, -50%) scale(0.3) rotate(0deg); opacity: 0; }
     30% { transform: translate(20vw, 20vh) scale(1) rotate(-120deg); opacity: 1; }
     100% { transform: translate(45vw, 35vh) scale(1.7) rotate(-360deg); opacity: 0; }
   }
 
-  .tornado-3 {
-    top: 50vh; left: 50vw;
-    animation: repelerIman3 2.5s ease-in-out infinite;
-  }
+  .tornado-3 { top: 50vh; left: 50vw; animation: repelerIman3 2.5s ease-in-out infinite; }
   @keyframes repelerIman3 {
     0% { transform: translate(-50%, -50%) scale(0.3) rotate(0deg); opacity: 0; }
     30% { transform: translate(15vw, -25vh) scale(1) rotate(180deg); opacity: 1; }
@@ -194,15 +181,13 @@
 </head>
 <body>
 
-  <!-- Pantalla de Inicio (Aquí está el fondo de flores) -->
   <section id="inicio" class="view active">
-    <h1>💛 ¡Olaaa Bri! 💛</h1>
+    <h1>💛 ¡Olaaa Valery! 💛</h1>
     <div class="highscore-badge">🏆 Récord máximo: <span id="highScoreDisplay">0</span></div>
     <p>Te preparé una pequeña sorpresa con flores amarillas 🌻</p>
     <button class="btn-jugar" onclick="iniciarExperiencia()">¡Empezar a jugar! 🌻</button>
   </section>
 
-  <!-- Secciones del Juego (Mantienen el fondo semitransparente para leer) -->
   <section id="instrucciones" class="view">
     <h1>🌻 Atrapa las flores 🌻</h1>
     <p>Atrapa todas las flores amarillas (🌻) que puedas durante 20 segundos.</p>
@@ -242,18 +227,17 @@
     <div class="final-card">
       <h1>🌻💛</h1>
       <img src="https://i.postimg.cc/VsWq2fB8/60a737db26da109e989e737efd1058ff.jpg" alt="Sorpresa">
-      <p>Hoy quiero regalarte estas flores amarillas porque te mereces lo más bonito del mundo. Aunque aún no nos conocemos en persona y solo hablemos por Instagram, te juro que me caes súper bien, te quiero y te estimo muchísimo.</p>
-      <p>Que este detalle te traiga una gran sonrisa hoy y siempre. ¡Brilla muchísimo! ✨</p>
-      <p><b>You're the best. TQM 💛</b></p>
-      <p><b>Con todo el cariño, Jhoan 💛</b></p>
+      <p>Valery, te regalo estas flores amarillas porque eres la mejor hermana del mundo. Aunque a veces peleemos o nos molestemos, quiero que sepas que te quiero muchísimo y que siempre voy a estar para apoyarte en todo.</p>
+      <p>Te mereces lo mejor hoy y siempre. ¡Nunca cambies y brilla muchísimo! ✨</p>
+      <p><b>You're the best sister. TQM 💛</b></p>
+      <p><b>Con todo el cariño, tu hermano Jhoan 💛</b></p>
       <button class="btn-jugar" style="margin-top:15px;" onclick="reiniciarJuego()">Jugar otra vez 🌻</button>
     </div>
   </section>
 
   <script>
-    // --- Lógica del Juego (Sin cambios) ---
     let score = 0;
-    let highScore = localStorage.getItem("brigitteHighScore") || 0;
+    let highScore = localStorage.getItem("valeryHighScore") || 0;
     let timer = 20;
     let intervalo = null;
     let creadorInterval = null;
@@ -263,4 +247,221 @@
     let cajaBonus = -1;
     let audioCtx = null;
 
-    document
+    document.getElementById("highScoreDisplay").textContent = highScore;
+
+    function initAudio() {
+      if (!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+      if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+    }
+
+    function playSound(tipo) {
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (tipo === 'acierto') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(1400, audioCtx.currentTime + 0.25);
+          gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.25);
+        } else {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.15);
+          gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.15);
+        }
+      } catch (e) {}
+    }
+
+    function mostrar(id){
+      document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    function iniciarExperiencia() { initAudio(); mostrar('instrucciones'); }
+
+    function iniciarJuego(){
+      mostrar("juego");
+      score = 0;
+      timer = 20;
+      terminado = false;
+      document.getElementById("score").textContent = score;
+      document.getElementById("timer").textContent = timer;
+      
+      const area = document.getElementById("gameArea");
+      area.innerHTML = "";
+      document.getElementById("tornadoContainer").innerHTML = "";
+      
+      clearInterval(intervalo);
+      clearInterval(creadorInterval);
+
+      intervalo = setInterval(()=>{
+        timer--;
+        document.getElementById("timer").textContent = timer;
+        if(timer === 9) mostrarTornados();
+        if(timer === 0) {
+          document.getElementById("tornadoContainer").innerHTML = "";
+          terminarJuego();
+        }
+      }, 1000);
+
+      creadorInterval = setInterval(()=>{
+        if(terminado) return;
+        crearObjeto();
+        crearObjeto();
+      }, 220);
+    }
+
+    function mostrarTornados() {
+      const tContainer = document.getElementById("tornadoContainer");
+      tContainer.innerHTML = `
+        <div class="tornado tornado-1">💨🍃</div>
+        <div class="tornado tornado-2">🍃💨</div>
+        <div class="tornado tornado-3">💨🍃</div>
+      `;
+      document.querySelectorAll(".collectible").forEach((el, index) => {
+        if(index % 2 === 0) el.remove();
+      });
+    }
+
+    function crearObjeto(){
+      if(terminado) return;
+      const objeto = document.createElement("div");
+      const tipos = ["🌻", "💛", "⭐", "🌹", "🌷", "🌸", "💖"];
+      const esBueno = Math.random() < 0.6;
+      objeto.className = "collectible";
+      objeto.textContent = esBueno ? tipos[Math.floor(Math.random()*3)] : tipos[3 + Math.floor(Math.random()*4)];
+      
+      objeto.style.left = (Math.random() * 85 + 5) + "vw";
+      objeto.style.animationDuration = (1.6 + Math.random() * 1.5) + "s";
+      
+      const tocarObjeto = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if(terminado) return;
+        if(esBueno){ score++; playSound('acierto'); }
+        else{ score = Math.max(0, score - 1); playSound('error'); }
+        document.getElementById("score").textContent = score;
+        objeto.remove();
+      };
+
+      objeto.addEventListener('pointerdown', tocarObjeto);
+      document.getElementById("gameArea").appendChild(objeto);
+      
+      setTimeout(()=> { if(objeto && objeto.parentNode) objeto.remove(); }, 3100);
+    }
+
+    function terminarJuego(){
+      if(terminado) return;
+      terminado = true;
+      clearInterval(intervalo);
+      clearInterval(creadorInterval);
+      document.querySelectorAll(".collectible").forEach(e => e.remove());
+      document.getElementById("tornadoContainer").innerHTML = "";
+
+      if(score > highScore){
+        highScore = score;
+        localStorage.setItem("valeryHighScore", highScore);
+        document.getElementById("highScoreDisplay").textContent = highScore;
+      }
+
+      crearCajas();
+      mostrar("viewCajas");
+    }
+
+    function crearCajas(){
+      const boxes = document.getElementById("boxes");
+      boxes.innerHTML = "";
+      document.getElementById("mensajeCaja").textContent = "";
+      intentosDisponibles = score;
+      
+      if (intentosDisponibles <= 0) {
+        document.getElementById("textoCajas").textContent = `Atrapaste 0 flores. ¡No tienes intentos disponibles!`;
+        setTimeout(() => mostrar("viewGameOver"), 1200);
+        return;
+      }
+
+      document.getElementById("textoCajas").textContent = `Atrapaste ${score} flores. Tienes ${intentosDisponibles} intento(s) para abrir cajas:`;
+      
+      cajaGanadora = Math.floor(Math.random() * 9);
+      do { cajaBonus = Math.floor(Math.random() * 9); } while (cajaBonus === cajaGanadora);
+
+      for(let i = 0; i < 9; i++){
+        const b = document.createElement("button");
+        b.className = "box";
+        b.textContent = "🎁";
+        let indexCaja = i;
+        b.onclick = () => verificarCaja(indexCaja, b);
+        boxes.appendChild(b);
+      }
+    }
+
+    function verificarCaja(index, boton){
+      if(intentosDisponibles <= 0 || boton.disabled) return;
+
+      if(index === cajaGanadora){
+        boton.textContent = "✨";
+        playSound('acierto');
+        setTimeout(() => { mostrar("viewSorpresaExtra"); }, 600);
+      } else if(index === cajaBonus) {
+        boton.textContent = "🎁+2";
+        boton.disabled = true;
+        intentosDisponibles += 2;
+        playSound('acierto');
+        document.getElementById("mensajeCaja").textContent = `¡Bonus +2 puntos!`;
+        document.getElementById("textoCajas").textContent = `Tienes ${intentosDisponibles} intento(s) para abrir cajas:`;
+      } else {
+        boton.textContent = "❌";
+        boton.disabled = true;
+        intentosDisponibles--;
+        playSound('error');
+        
+        if(intentosDisponibles > 0){
+          document.getElementById("mensajeCaja").textContent = `¡Falló! Te quedan ${intentosDisponibles} intento(s).`;
+          document.getElementById("textoCajas").textContent = `Tienes ${intentosDisponibles} intento(s) para abrir cajas:`;
+        } else {
+          document.getElementById("mensajeCaja").textContent = `¡Se acabaron tus intentos!`;
+          setTimeout(() => { mostrar("viewGameOver"); }, 1200);
+        }
+      }
+    }
+
+    function lanzarExplosionTotal() {
+      playSound('acierto');
+      const elementos = ['#f7b500', '#ffd54f', '#ff5722', '#ffeb3b', '#4caf50', '#03a9f4', '#e91e63', '🌻', '✨', '💛'];
+      for (let i = 0; i < 90; i++) {
+        const item = document.createElement('div');
+        item.className = 'confetti-piece';
+        item.style.left = Math.random() * 100 + 'vw';
+        const elegido = elementos[Math.floor(Math.random() * elementos.length)];
+        if(elegido.startsWith('#')){
+          item.style.backgroundColor = elegido;
+        } else {
+          item.style.backgroundColor = 'transparent';
+          item.textContent = elegido;
+          item.style.fontSize = '24px';
+          item.style.width = 'auto';
+          item.style.height = 'auto';
+        }
+        item.style.animationDuration = (1.2 + Math.random() * 2) + 's';
+        document.body.appendChild(item);
+        setTimeout(() => item.remove(), 3500);
+      }
+      setTimeout(() => { mostrar("viewFinal"); }, 700);
+    }
+
+    function reiniciarJuego(){
+      terminado = false;
+      document.getElementById("highScoreDisplay").textContent = highScore;
+      mostrar("inicio");
+    }
+  </script>
+</body>
+</html>
