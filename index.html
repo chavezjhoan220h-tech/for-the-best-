@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flores Amarillas para Brigitte 🌻💛</title>
+<style>
+  /* --- Estilos Generales --- */
+  * { box-sizing: border-box; user-select: none; -webkit-tap-highlight-color: transparent; }
+  
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    /* CAMBIO AQUÍ: Fondo de muchas flores amarillas */
+    background-image: url('https://images.unsplash.com/photo-1519397011158-9f13703a2351?q=80&w=1000&auto=format&fit=crop');
+    background-size: cover; /* La imagen cubre toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* No repite la imagen */
+    background-attachment: fixed; /* El fondo se queda fijo al hacer scroll */
+    color: #5b4300; /* Color de texto oscuro para contraste */
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Añadimos una capa semitransparente oscura sobre el fondo para que el texto se lea bien */
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(255, 255, 200, 0.6); /* Capa amarilla muy clara y transparente */
+    z-index: -1; /* Detrás de todo el contenido */
+  }
+
+  .view {
+    display: none;
+    min-height: 100vh;
+    padding: 35px 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .view.active { display: flex; }
+  
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Un poco más grande */
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.8); /* Sombra para el título */
+    color: #856404; /* Tono de amarillo más oscuro para el texto */
+  }
+  
+  p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    line-height: 1.6;
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo semitransparente para los párrafos */
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px auto;
+    font-weight: bold;
+  }
+  
+  button {
+    border: 0;
+    border-radius: 50px; /* Botón más redondeado */
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    transition: transform 0.1s, background-color 0.2s;
+    margin-top: 20px;
+  }
+  
+  button:active { transform: scale(0.95); }
+  
+  .btn-jugar {
+    background: #ffc107; /* Amarillo vibrante para el botón */
+    color: #856404;
+    border: 2px solid #856404;
+  }
+  
+  .btn-jugar:hover {
+    background: #ffca2c;
+  }
+
+  /* --- Resto de estilos del juego (sin cambios) --- */
+  .game-area{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+
+  .collectible{
+    position:absolute;
+    font-size:38px;
+    cursor:pointer;
+    pointer-events:auto;
+    animation: caerDesordenado linear forwards;
+    z-index: 10;
+  }
+  @keyframes caerDesordenado {
+    0% { transform: translate(0px, -60px) rotate(0deg); }
+    25% { transform: translate(35px, 25vh) rotate(45deg); }
+    50% { transform: translate(-35px, 50vh) rotate(90deg); }
+    75% { transform: translate(25px, 75vh) rotate(135deg); }
+    100% { transform: translate(0px, 105vh) rotate(180deg); }
+  }
+
+  .tornado {
+    position: fixed;
+    font-size: 65px;
+    z-index: 15;
+    pointer-events: none;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.9));
+  }
+
+  .tornado-1 {
+    top: 50vh; left: 50vw;
+    animation: repelerIman1 2s ease-in-out infinite;
+  }
+  @keyframes repelerIman1 {
+    0% { transform: translate(-50%, -50%) scale(0.3) rotate(0deg); opacity: 0; }
+    30% { transform: translate(-20vw, -20vh) scale(1) rotate(120deg); opacity: 1; }
+    100% { transform: translate(-50vw, -40vh) scale(1.6) rotate(360deg); opacity: 0; }
+  }
+
+  .tornado-2 {
+    top: 50vh; left: 50vw;
+    animation: repelerIman2 2.2s ease-in-out infinite;
+  }
+  @keyframes repelerIman2 {
+    0% { transform: translate(-50%, -50%) scale(0.3) rotate(0deg); opacity: 0; }
+    30% { transform: translate(20vw, 20vh) scale(1) rotate(-120deg); opacity: 1; }
+    100% { transform: translate(45vw, 35vh) scale(1.7) rotate(-360deg); opacity: 0; }
+  }
+
+  .tornado-3 {
+    top: 50vh; left: 50vw;
+    animation: repelerIman3 2.5s ease-in-out infinite;
+  }
+  @keyframes repelerIman3 {
+    0% { transform: translate(-50%, -50%) scale(0.3) rotate(0deg); opacity: 0; }
+    30% { transform: translate(15vw, -25vh) scale(1) rotate(180deg); opacity: 1; }
+    100% { transform: translate(35vw, -45vh) scale(1.5) rotate(720deg); opacity: 0; }
+  }
+
+  .score{position:fixed;top:18px;left:18px;background:rgba(255, 255, 255, 0.8);padding:10px 16px;border-radius:20px;font-weight:bold;z-index:20;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+  .highscore-badge{background:rgba(255, 243, 205, 0.9);padding:8px 16px;border-radius:20px;font-weight:bold;color:#b7791f;margin:10px 0;display:inline-block;border:1px solid #ffeeba;}
+  
+  .boxes-grid{display:grid;grid-template-columns:repeat(3,90px);gap:18px;margin-top:20px; justify-content: center;}
+  .box{font-size:48px;background:rgba(255, 248, 207, 0.9);border:3px solid #f4bd18;border-radius:16px;padding:10px;cursor:pointer; transition: all 0.2s;}
+  .box:disabled{opacity:0.5; cursor:not-allowed; background:#eee; border-color:#ccc;}
+  .box:not(:disabled):hover {transform: translateY(-5px); box-shadow: 0 5px 10px rgba(0,0,0,0.2);}
+
+  .caja-loca-container {
+    cursor: pointer;
+    margin: 30px 0 15px 0;
+    display: inline-block;
+    animation: sacudidaLoca 0.3s ease-in-out infinite alternate;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+  }
+  @keyframes sacudidaLoca {
+    0% { transform: translate(-5px, 3px) rotate(-5deg); }
+    50% { transform: translate(5px, -3px) rotate(5deg); }
+    100% { transform: translate(-3px, -5px) rotate(-3deg); }
+  }
+
+  .caja-emoji { font-size: 120px; display: block; }
+
+  .texto-presiona-apertura {
+    font-size: 1.4rem; color: #856404; font-weight: bold; margin-top: 10px;
+    animation: latidoTexto 0.8s ease-in-out infinite alternate;
+    background-color: rgba(255, 255, 255, 0.7); padding: 10px; border-radius: 10px; display: inline-block;
+  }
+  @keyframes latidoTexto { from { transform: scale(1); } to { transform: scale(1.05); } }
+
+  .final-card{background:rgba(255, 255, 255, 0.95);border-radius:25px;padding:30px;max-width:650px;width:90%;box-shadow:0 15px 40px rgba(0,0,0,0.3);margin: 40px auto;}
+  .final-card img{
+    width:min(250px,80%); border-radius:20px; margin-bottom:20px;
+    animation: zoomInFoto 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  @keyframes zoomInFoto { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+  #viewFinal{overflow-y: auto; justify-content: center;}
+  #viewCajas{overflow-y: auto; justify-content: center;}
+  #viewSorpresaExtra{overflow-y: auto; justify-content: center;}
+
+  .confetti-piece {
+    position: fixed; width: 12px; height: 18px; background: #f00; top: -20px; opacity: 0.9; z-index: 9999;
+    animation: caidaConfeti linear forwards;
+  }
+  @keyframes caidaConfeti { 0% { transform: translateY(0px) rotate(0deg); } 100% { transform: translateY(105vh) rotate(720deg); } }
+</style>
+</head>
+<body>
+
+  <!-- Pantalla de Inicio (Aquí está el fondo de flores) -->
+  <section id="inicio" class="view active">
+    <h1>💛 ¡Olaaa Bri! 💛</h1>
+    <div class="highscore-badge">🏆 Récord máximo: <span id="highScoreDisplay">0</span></div>
+    <p>Te preparé una pequeña sorpresa con flores amarillas 🌻</p>
+    <button class="btn-jugar" onclick="iniciarExperiencia()">¡Empezar a jugar! 🌻</button>
+  </section>
+
+  <!-- Secciones del Juego (Mantienen el fondo semitransparente para leer) -->
+  <section id="instrucciones" class="view">
+    <h1>🌻 Atrapa las flores 🌻</h1>
+    <p>Atrapa todas las flores amarillas (🌻) que puedas durante 20 segundos.</p>
+    <p>¡Cuidado! A los 11 segundos se activarán las sopladoras imán que expandirán y harán volar todo hacia los costados.</p>
+    <button class="btn-jugar" onclick="iniciarJuego()">¡Estoy listo! 💛</button>
+  </section>
+
+  <section id="juego" class="view">
+    <div class="score">🌻 Flores: <span id="score">0</span> · ⏱️ <span id="timer">20</span>s</div>
+    <div id="gameArea" class="game-area"></div>
+    <div id="tornadoContainer"></div>
+  </section>
+
+  <section id="viewCajas" class="view">
+    <h1>🎁 Tus Intentos</h1>
+    <p id="textoCajas"></p>
+    <div id="boxes" class="boxes-grid"></div>
+    <p id="mensajeCaja" style="min-height:24px;"></p>
+  </section>
+
+  <section id="viewGameOver" class="view">
+    <h1 style="font-size: 60px; margin-bottom: 0;">🥺</h1>
+    <h2 style="color: #856404; margin-top: 10px;">¡No lo encontraste!</h2>
+    <p>Se te acabaron los intentos y no pudiste adivinar la caja correcta. ¡Vuelve a intentarlo atrapando más flores amarillas!</p>
+    <button class="btn-jugar" style="margin-top: 20px;" onclick="reiniciarJuego()">🔄 Volver a intentar</button>
+  </section>
+
+  <section id="viewSorpresaExtra" class="view">
+    <h1>🎉 ¡Lo encontraste! 🎉</h1>
+    <div class="caja-loca-container" onclick="lanzarExplosionTotal()">
+      <div class="caja-emoji">🎁</div>
+    </div>
+    <div class="texto-presiona-apertura" onclick="lanzarExplosionTotal()">¡Presiona, presiona para abrir! 📦✨</div>
+  </section>
+
+  <section id="viewFinal" class="view">
+    <div class="final-card">
+      <h1>🌻💛</h1>
+      <img src="https://i.postimg.cc/VsWq2fB8/60a737db26da109e989e737efd1058ff.jpg" alt="Sorpresa">
+      <p>Hoy quiero regalarte estas flores amarillas porque te mereces lo más bonito del mundo. Aunque aún no nos conocemos en persona y solo hablemos por Instagram, te juro que me caes súper bien, te quiero y te estimo muchísimo.</p>
+      <p>Que este detalle te traiga una gran sonrisa hoy y siempre. ¡Brilla muchísimo! ✨</p>
+      <p><b>You're the best. TQM 💛</b></p>
+      <p><b>Con todo el cariño, Jhoan 💛</b></p>
+      <button class="btn-jugar" style="margin-top:15px;" onclick="reiniciarJuego()">Jugar otra vez 🌻</button>
+    </div>
+  </section>
+
+  <script>
+    // --- Lógica del Juego (Sin cambios) ---
+    let score = 0;
+    let highScore = localStorage.getItem("brigitteHighScore") || 0;
+    let timer = 20;
+    let intervalo = null;
+    let creadorInterval = null;
+    let terminado = false;
+    let cajaGanadora = 0;
+    let intentosDisponibles = 0;
+    let cajaBonus = -1;
+    let audioCtx = null;
+
+    document
